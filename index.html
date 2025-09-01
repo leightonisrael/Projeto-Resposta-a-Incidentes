@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História do EternalBlue - Apresentação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            text-align: center;
+        }
+        .slide-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            min-height: 58vh;
+            max-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: opacity 0.5s ease-in-out;
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .slide {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .slide.active {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInFromRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .slide h1, .slide h2 {
+            font-weight: 700;
+            color: #58a6ff;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+            animation-delay: 0.1s;
+            opacity: 0;
+        }
+        .slide h1 {
+            font-size: 3rem;
+        }
+        .slide h2 {
+            font-size: 2rem;
+        }
+        .slide p, .slide ul {
+            font-size: 0.98rem;
+            line-height: 1.5;
+            margin-bottom: 0.6rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+            opacity: 0;
+            text-align: left;
+            max-width: 100%;
+        }
+        .slide .image-container {
+            margin-top: 1.2rem;
+            margin-bottom: 0.8rem;
+            animation: zoomIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+            opacity: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* reserve vertical space but prevent overflow */
+            max-height: 32vh;
+            box-sizing: border-box;
+            padding: 0.25rem;
+        }
+        .slide img {
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            /* show whole image without cropping */
+            object-fit: contain;
+            width: auto;
+            max-width: 90%;
+            height: auto;
+            max-height: 28vh;
+        }
+
+        /* Ajustes para evitar barra de rolagem: reduzir títulos e texto em telas pequenas */
+        @media (max-width: 640px), (max-height: 700px) {
+            .slide-container { padding: 1rem; min-height: 55vh; max-height: 68vh; }
+            .slide h1 { font-size: 2rem; }
+            .slide h2 { font-size: 1.25rem; }
+            .slide p, .slide ul { font-size: 0.92rem; line-height: 1.3; }
+            .slide img { max-height: 24vh; max-width: 420px; }
+            .navigation { margin-top: 1rem; }
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 2.5rem;
+        }
+        .nav-btn {
+            background-color: #21262d;
+            color: #c9d1d9;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+            border: 1px solid #30363d;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .nav-btn:hover {
+            background-color: #30363d;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        #slide-counter {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    .slide { padding: 0.5rem 1rem; box-sizing: border-box; }
+    .slide .title-main { animation-delay: 0.1s; }
+    .slide .text-main { animation-delay: 0.3s; }
+    .slide .image-main { animation-delay: 0.5s; }
+        .slide .list-item-1 { animation-delay: 0.5s; }
+        .slide .list-item-2 { animation-delay: 0.7s; }
+        .slide .list-item-3 { animation-delay: 0.9s; }
+        .slide .list-item-4 { animation-delay: 1.1s; }
+
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+    <div class="slide-container">
+        <!-- Slide 1: Título -->
+        <div id="slide1" class="slide active">
+            <h1 class="title-main">Apresentação do Módulo de Resposta a Incidentes<br></h1>
+            <div class="image-container image-main">
+                <img src="./cabeçalho-sec.png" alt="Centro de operações de segurança cibernética">
+            </div>
+            <p class="text-main text-xl"><strong>By Israel Hall Leighton</strong></p>
+            <p class="text-main text-xl">A História do EternalBlue: De uma arma secreta de espionagem ao caos global da cibersegurança</p>
+        </div>
+
+        <!-- Slide 2: Origem do EternalBlue -->
+        <div id="slide2" class="slide">
+            <h2 class="title-main">Origem: Uma Ferramenta da NSA</h2>
+            <div class="image-container image-main">
+                <img src="./NSA.svg" alt="Imagem do prédio da NSA.">
+            </div>
+            <p class="text-main">
+                O EternalBlue não foi criado por criminosos, mas pela Agência de Segurança Nacional (NSA) dos Estados Unidos. Ele foi desenvolvido como uma sofisticada ferramenta de ciberespionagem.
+            </p>
+            <ul class="list-disc w-full px-8">
+                <li class="list-item-1">Explorava uma falha crítica no protocolo <strong>SMBv1</strong> (Server Message Block), usado para compartilhamento de arquivos em redes Windows.</li>
+                <li class="list-item-2">Essa vulnerabilidade, identificada como <strong>CVE-2017-0144</strong>, permitia a execução remota de código, dando aos invasores controle total sobre a máquina afetada.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: Vazamento pelo Shadow Brokers -->
+        <div id="slide3" class="slide">
+            <h2 class="title-main">O Vazamento: Shadow Brokers</h2>
+            <div class="image-container image-main">
+                <img src="./shadow-brokers-nsa-hacking.webp" alt="Ícone representando o grupo Shadow Brokers.">
+            </div>
+            <p class="text-main">
+                Em abril de 2017, um grupo hacker conhecido como "The Shadow Brokers" lançou uma série de ferramentas cibernéticas que alegavam ter roubado da NSA. O vazamento incluiu exploits, ferramentas de intrusão e código-fonte que antes eram de uso restrito a agências de segurança.
+            </p>
+            <p class="text-main">
+                A identidade e os motivos exatos dos integrantes do Shadow Brokers permanecem obscuros. Algumas teorias apontam para ganho financeiro, outras para motivos políticos ou para operadores oportunistas que exploraram uma vulnerabilidade na cadeia de segurança.
+            </p>
+            <ul class="list-disc w-full px-8">
+                <li class="list-item-1">O pacote continha o código-fonte do EternalBlue, expondo-o publicamente pela primeira vez.</li>
+                <li class="list-item-2">A divulgação acelerou a criação de variantes maliciosas e facilitou a vida de cibercriminosos menos sofisticados.</li>
+                <li class="list-item-3">O grupo publicou diferentes pacotes em etapas, o que gerou picos de incidentes à medida que novas ferramentas eram analisadas e reutilizadas.</li>
+                <li class="list-item-4">Impacto: além do EternalBlue, o vazamento mostrou a vulnerabilidade de reter exploits sem mitigá-los, pois a disponibilidade pública transforma ferramentas de inteligência em armas de oportunidade.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 4: O Alerta Inicial -->
+        <div id="slide4" class="slide">
+            <h2 class="title-main">O Alerta: Antes da Tempestade</h2>
+            <div class="image-container image-main">
+                <img src="./GettyImages-cybercrime.jpg" alt="Imagem de um mapa global com pontos vermelhos.">
+            </div>
+            <p class="text-main">
+                A Microsoft, ciente da vulnerabilidade, havia lançado um patch de segurança para corrigir o problema. No entanto, o patch foi ignorado por muitos.
+            </p>
+            <ul class="list-disc w-full px-8">
+                <li class="list-item-1">O patch, conhecido como <strong>MS17-010</strong>, foi lançado em março de 2017, um mês antes do vazamento.</li>
+                <li class="list-item-2">A maioria das empresas e usuários não o aplicaram imediatamente, deixando milhões de sistemas expostos.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 5: A Onda de WannaCry -->
+        <div id="slide5" class="slide">
+            <h2 class="title-main">A Onda de WannaCry</h2>
+            <div class="image-container image-main">
+                <img src="./wannacry-hsitory-lessons-ransom-note.jpg" alt="Imagem da tela do ransomware WannaCry.">
+            </div>
+            <p class="text-main">
+                Em maio de 2017, o WannaCry, um ransomware que se espalhava usando o EternalBlue, causou pânico global.
+            </p>
+            <ul class="list-disc w-full px-8">
+                <li class="list-item-1">Ele criptografava os arquivos das vítimas e exigia um resgate em Bitcoin.</li>
+                <li class="list-item-2">Atingiu mais de <strong>200 mil computadores</strong> em <strong>150 países</strong>, paralisando hospitais, fábricas e agências governamentais.</li>
+                <li class="list-item-3">O ataque só foi contido por um "kill switch" acidental, descoberto por um pesquisador de segurança.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 6: A Ameaça de NotPetya -->
+        <div id="slide6" class="slide">
+            <h2 class="title-main">A Ameaça de NotPetya</h2>
+            <div class="image-container image-main">
+                <img src="./2017_Petya_cyberattack_screenshot.png" alt="Ícone de um vírus apagando dados.">
+            </div>
+            <p class="text-main">
+                Um mês depois, o mundo enfrentou o NotPetya. Embora parecesse um ransomware, na verdade era um malware destrutivo.
+            </p>
+            <ul class="list-disc w-full px-8">
+                <li class="list-item-1">Usava o EternalBlue para se espalhar por redes internas.</li>
+                <li class="list-item-2">Seu objetivo não era pedir resgate, mas <strong>destruir os dados</strong> dos sistemas infectados de forma irreversível.</li>
+                <li class="list-item-3">Causou prejuízos bilionários a grandes empresas como Maersk, FedEx e Merck, evidenciando o perigo de uma guerra cibernética.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 7: Resposta da Microsoft -->
+        <div id="slide7" class="slide">
+            <h2 class="title-main">A Resposta Sem Precedentes da Microsoft</h2>
+            <div class="image-container image-main">
+                <img src="./Windows-defender.svg.png" alt="Escudo de segurança com o logo da Microsoft.">
+            </div>
+            <p class="text-main">
+                Devido à gravidade dos ataques, a Microsoft tomou uma medida drástica e rara:
+            </p>
+            <ul class="list-disc w-full px-8">
+                <li class="list-item-1">Lançou um patch de emergência para sistemas operacionais antigos, como o <strong>Windows XP</strong>, que já estavam fora de suporte.</li>
+                <li class="list-item-2">Essa ação destacou a seriedade da vulnerabilidade e a necessidade de uma resposta imediata para proteger a infraestrutura global.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 8: Uso Contínuo do Exploit -->
+        <div id="slide8" class="slide">
+            <h2 class="title-main">O Exploit Vive</h2>
+            <div class="image-container image-main">
+                <img src="./cryptocurrency-mining.png" alt="Imagem de moedas digitais.">
+            </div>
+            <p class="text-main">
+                Mesmo com os patches disponíveis, o EternalBlue ainda é uma ameaça nos dias de hoje.
+            </p>
+            <ul class="list-disc w-full px-8">
+                <li class="list-item-1">Ele continua sendo utilizado, especialmente para <strong>mineração de criptomoedas</strong> em computadores e servidores sem a atualização de segurança.</li>
+                <li class="list-item-2">Seus alvos são redes legadas e sistemas que não podem ser atualizados facilmente, provando que uma falha pode ser perigosa por anos.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 9: Lições Aprendidas -->
+        <div id="slide9" class="slide">
+            <h2 class="title-main">Lições Aprendidas</h2>
+            <ul class="list-disc w-full px-8">
+                <li class="list-item-1"><strong>Aplicação Rápida de Patches:</strong> A velocidade em que vulnerabilidades críticas são corrigidas é vital para a defesa.</li>
+                <li class="list-item-2"><strong>O Perigo das Falhas Zero-Day:</strong> A posse de exploits por agências governamentais pode ser uma faca de dois gumes, com o risco de vazamentos catastróficos.</li>
+                <li class="list-item-3"><strong>Risco de Protocolos Legados:</strong> A confiança em tecnologias antigas e não seguras (como o SMBv1) é uma porta de entrada para ataques em larga escala.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 10: Legado do EternalBlue -->
+        <div id="slide10" class="slide">
+            <h2 class="title-main">O Legado Duradouro</h2>
+            <div class="image-container image-main">
+                <img src="./Cybersecurity-threat-intelligence-640x341.jpg" alt="Imagem de um marco na história.">
+            </div>
+            <p class="text-main">
+                O EternalBlue se tornou um dos maiores marcos da história da cibersegurança.
+            </p>
+            <ul class="list-disc w-full px-8">
+                <li class="list-item-1">Ele provou a fragilidade das infraestruturas digitais globais.</li>
+                <li class="list-item-2">Funcionou como um alerta severo para empresas e governos investirem em segurança proativa, não apenas reativa.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 11: Conclusão -->
+        <div id="slide11" class="slide">
+            <h2 class="title-main">Conclusão</h2>
+            <p class="text-main">
+                O EternalBlue é um exemplo claro de como uma arma cibernética estatal pode se transformar em uma ferramenta de destruição global. A história nos mostra que a segurança digital é uma responsabilidade compartilhada e que a vigilância constante é a única maneira de nos protegermos de ameaças que evoluem rapidamente.
+            </p>
+        </div>
+    </div>
+
+    <div class="navigation mt-4">
+        <button id="prevBtn" class="nav-btn">Anterior</button>
+        <span id="slide-counter" class="text-lg"></span>
+        <button id="nextBtn" class="nav-btn">Próximo</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const slideCounter = document.getElementById('slide-counter');
+            let currentSlide = 0;
+
+            const updateSlideDisplay = () => {
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('active');
+                });
+                slides[currentSlide].classList.add('active');
+                slideCounter.textContent = `Slide ${currentSlide + 1} de ${slides.length}`;
+            };
+
+            const goToSlide = (slideIndex) => {
+                currentSlide = (slideIndex + slides.length) % slides.length;
+                updateSlideDisplay();
+            };
+
+            prevBtn.addEventListener('click', () => {
+                goToSlide(currentSlide - 1);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                goToSlide(currentSlide + 1);
+            });
+
+            updateSlideDisplay();
+        });
+    </script>
+</body>
+</html>
